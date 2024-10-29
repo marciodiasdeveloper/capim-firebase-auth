@@ -3,9 +3,9 @@
 
 Bem-vindo ao **Madah - Firebase Auth**, um projeto focado no gerenciamento de tarefas com foco em escalabilidade e segurança. Este repositório contém o backend da aplicação, com uma integração sólida usando NodeJS & Firebase.
 
-## 📋 Importar rotas api no Insominia
+## 📋 Importar rotas api no Insomnia
 
-Arquivo Insominia disponível em: [documentation/Insomnia.json](documentation/Insomnia.json)
+Arquivo de rotas no Insomnia disponível em: [documentation/Insomnia.json](documentation/Insomnia.json)
 
 ---
 
