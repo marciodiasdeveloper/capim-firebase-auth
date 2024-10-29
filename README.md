@@ -2,6 +2,7 @@
 # Madah - Firebase Auth
 
 Bem-vindo ao **Madah - Firebase Auth**, um projeto focado no gerenciamento de tarefas com foco em escalabilidade e segurança. Este repositório contém o backend da aplicação, com uma integração sólida usando NodeJS & Firebase.
+Bem-vindo ao **Madah - Firebase Auth**! Este projeto é um sistema robusto de gerenciamento de tarefas, projetado com foco em escalabilidade, segurança e manutenibilidade. Construído com Node.js e Firebase, o backend da aplicação segue princípios de **SOLID** e **Clean Code** para oferecer uma base de código organizada, de fácil extensão e confiável. Este repositório inclui uma arquitetura modular, integrada com Firebase Auth e Firestore, garantindo autenticação segura e gestão de dados eficaz para uma experiência ágil e consistente.
 
 ## 📋 Importar rotas api no Insomnia
 
