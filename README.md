@@ -5,12 +5,7 @@ Bem-vindo ao **Madah - Firebase Auth**, um projeto focado no gerenciamento de ta
 
 ## 📋 Importar rotas api no Insominia
 
-Arquivo Insominia disponível em: [documentation/Insominia.json](documentation/Insominia.json)
-
-
-```
-documentation/Insominia.json
-```
+Arquivo Insominia disponível em: [documentation/Insomnia.json](documentation/Insomnia.json)
 
 ---
 
