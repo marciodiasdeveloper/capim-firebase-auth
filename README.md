@@ -100,7 +100,7 @@ Antes de começar, certifique-se de ter instalado:
 
 5. **Acesse a aplicação:**
 
-   O frontend estará disponível em `http://localhost:8080` e o backend em `http://localhost:3000`.
+   O backend estará disponível em `http://localhost:8092`.
 
 ## 📖 Documentação da API
 
