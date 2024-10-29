@@ -49,14 +49,14 @@ Antes de começar, certifique-se de ter instalado:
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/marciodiasdeveloper/clean-firebase-auth.git
+   git clone https://github.com/marciodiasdeveloper/madah-firebase-auth.git
    ```
 2. **Instale as dependências no backend:**
 
    No diretório principal, execute:
 
    ```bash
-   cd clean-firebase-auth
+   cd madah-firebase-auth
    npm install
    ```
 
