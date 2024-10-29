@@ -1,0 +1,20 @@
+{
+  "watch": [
+    "src",
+    ".env",
+    "proto/*"
+  ],
+  "ext": "ts,json",
+  "ignore": [
+    "logger",
+    "tests/**/*.{spec,test}.ts",
+    "mocks",
+    ".vscode",
+    "node_modules",
+    "logger",
+    "coverage",
+    "dist",
+    ".husky"
+  ],
+  "exec": "ts-node ./src/index.ts"
+}

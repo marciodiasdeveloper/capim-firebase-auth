@@ -1,0 +1,118 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Madah Firebase Auth",
+    "description": "This is an Auth API",
+    "version": "0.0.1",
+    "contact": {
+      "email": "contato@marciodias.me"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8092/api"
+    }
+  ],
+  "paths": {
+    "/token": {
+      "post": {
+        "tags": [
+          "User Access Token"
+        ],
+        "summary": "[UAT] Obtain access token for a user",
+        "description": "Get access token for a user",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "name": "host",
+            "in": "header",
+            "description": "Host Header example: foobar.com",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "username",
+                  "password"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string",
+                      "default": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ1dVN6aVhmaWFpbXlmRmhacHRkWTByRGFBTTdwcENoY0NDTHhTLVJNTlRNIn0.eyJleHAiOjE2NzU0Mjg5ODcsImlhdCI6MTY3NTQyODkyNywianRpIjoiOTA3YjczYzUtM2YxZi00NGRmLThkOWYtODg3OGE2NzQ4ZThkIiwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDEwL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOlsiY3VzdG9tZXJfMDAxLXJlYWxtIiwibWFzdGVyLXJlYWxtIiwiYWNjb3VudCJdLCJzdWIiOiI2OTcwOGIwYi1jOTZlLTRmNDAtYTdhOC1lZGM5N2YwMTE5YjEiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhcGkta2V5Y2xvYWsiLCJzZXNzaW9uX3N0YXRlIjoiNjAwOTQ4ZjktNDZkZS00YTFmLWI5ZGMtMjM1ZGM0MGIyMDY2IiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJjcmVhdGUtcmVhbG0iLCJkZWZhdWx0LXJvbGVzLW1hc3RlciIsIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImN1c3RvbWVyXzAwMS1yZWFsbSI6eyJyb2xlcyI6WyJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsInZpZXctcmVhbG0iLCJtYW5hZ2UtaWRlbnRpdHktcHJvdmlkZXJzIiwiaW1wZXJzb25hdGlvbiIsImNyZWF0ZS1jbGllbnQiLCJtYW5hZ2UtdXNlcnMiLCJxdWVyeS1yZWFsbXMiLCJ2aWV3LWF1dGhvcml6YXRpb24iLCJxdWVyeS1jbGllbnRzIiwicXVlcnktdXNlcnMiLCJtYW5hZ2UtZXZlbnRzIiwibWFuYWdlLXJlYWxtIiwidmlldy1ldmVudHMiLCJ2aWV3LXVzZXJzIiwidmlldy1jbGllbnRzIiwibWFuYWdlLWF1dGhvcml6YXRpb24iLCJtYW5hZ2UtY2xpZW50cyIsInF1ZXJ5LWdyb3VwcyJdfSwibWFzdGVyLXJlYWxtIjp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwiY3JlYXRlLWNsaWVudCIsIm1hbmFnZS11c2VycyIsInF1ZXJ5LXJlYWxtcyIsInZpZXctYXV0aG9yaXphdGlvbiIsInF1ZXJ5LWNsaWVudHMiLCJxdWVyeS11c2VycyIsIm1hbmFnZS1ldmVudHMiLCJtYW5hZ2UtcmVhbG0iLCJ2aWV3LWV2ZW50cyIsInZpZXctdXNlcnMiLCJ2aWV3LWNsaWVudHMiLCJtYW5hZ2UtYXV0aG9yaXphdGlvbiIsIm1hbmFnZS1jbGllbnRzIiwicXVlcnktZ3JvdXBzIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJzaWQiOiI2MDA5NDhmOS00NmRlLTRhMWYtYjlkYy0yMzVkYzQwYjIwNjYiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImFwaS1rZXljbG9hayIsImdpdmVuX25hbWUiOiIiLCJmYW1pbHlfbmFtZSI6IiJ9.WNAqseZE0IFeFHESpPLHgRibzNqgJw3KIUg8qZal7Xe-DPlPzeK0FoiYA_SQIjZTK3qnRL9-pG2wFGsNPmSRAFzHf0_twlGlKW8djNrSRfvNH4yiccNBrrK2AWsEjzzSWDuUjvkN2SIiMneoA4_ZiJ7VEDS48--Lnd9Fa_snTRt34MrLRGblzedCqSBho4XIulH5-bUwN0JBkaUzsrAe4GSN0vKZBH3V7m-Yexpy5T_TjUyEoJnY_agXXRWg5rl5wQj7P7L8O-PR2DSNowZcRdBdvC2UZYUZLXbc1h5YYuM2glP2Hz-cxfUMossjRAooelHnChH3NkYkbtNe2z9YoA"
+                    },
+                    "expires_in": {
+                      "type": "number",
+                      "default": 60
+                    },
+                    "refresh_expires_in": {
+                      "type": "number",
+                      "default": 1800
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "default": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjZjA0M2EzNy05MmQ3LTQ5OTgtODE0My0wZjg0NTZmM2ExNTQifQ.eyJleHAiOjE2NzU0MzA3MjcsImlhdCI6MTY3NTQyODkyNywianRpIjoiMTBlZWRkYjUtOWY0ZS00MDhmLWFlMGEtNzQyN2MxYmU3NDkzIiwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMTo4MDEwL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOiJodHRwOi8vMTI3LjAuMC4xOjgwMTAvcmVhbG1zL21hc3RlciIsInN1YiI6IjY5NzA4YjBiLWM5NmUtNGY0MC1hN2E4LWVkYzk3ZjAxMTliMSIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJhcGkta2V5Y2xvYWsiLCJzZXNzaW9uX3N0YXRlIjoiNjAwOTQ4ZjktNDZkZS00YTFmLWI5ZGMtMjM1ZGM0MGIyMDY2Iiwic2NvcGUiOiJlbWFpbCBwcm9maWxlIiwic2lkIjoiNjAwOTQ4ZjktNDZkZS00YTFmLWI5ZGMtMjM1ZGM0MGIyMDY2In0.BMCn4ogkz_0Kjs9AfmSnNyTPxZxMwPUViVt3ttcjRy0"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "default": "Bearer"
+                    },
+                    "not-before-policy": {
+                      "type": "number",
+                      "default": 0
+                    },
+                    "session_state": {
+                      "type": "string",
+                      "default": "600948f9-46de-4a1f-b9dc-235dc40b2066"
+                    },
+                    "scope": {
+                      "type": "string",
+                      "default": "email, profile"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Access Token User Error"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "security": [],
+  "components": {
+    "links": {},
+    "callbacks": {},
+    "schemas": {}
+  }
+}
