@@ -7,6 +7,12 @@ export namespace TasksShow {
     id: string
   }
   export type Output = undefined | {
-    token: string
+    id: string
+    title: string
+    description: string
+    status: string
+    dueDate: string
+    createdAt: Date
+    updatedAt: Date
   }
 }

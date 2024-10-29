@@ -20,7 +20,11 @@ export class TasksUpdateController extends Controller {
 
   override buildValidators (input: HttpRequest): Validator[] {
     return [
-      ...Builder.of({ value: input.id, fieldName: 'id' }).required().build()
+      ...Builder.of({ value: input.id, fieldName: 'id' }).required().build(),
+      ...Builder.of({ value: input.title, fieldName: 'title' }).required().build(),
+      ...Builder.of({ value: input.description, fieldName: 'description' }).required().build(),
+      ...Builder.of({ value: input.status, fieldName: 'status' }).required().build(),
+      ...Builder.of({ value: input.dueDate, fieldName: 'dueDate' }).required().build()
     ]
   }
 }

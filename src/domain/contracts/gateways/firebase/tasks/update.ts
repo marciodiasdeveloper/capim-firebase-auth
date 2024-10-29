@@ -5,8 +5,12 @@ export interface TasksUpdate {
 export namespace TasksUpdate {
   export type Input = {
     id: string
+    title: string
+    description: string
+    status: string
+    dueDate: string
   }
   export type Output = undefined | {
-    token: string
+    id: string
   }
 }

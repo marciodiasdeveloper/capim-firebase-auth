@@ -4,10 +4,12 @@ export interface TasksStore {
 
 export namespace TasksStore {
   export type Input = {
-    email: string
-    password: string
+    title: string
+    description: string
+    status: string
+    dueDate: string
   }
   export type Output = undefined | {
-    token: string
+    id: string
   }
 }

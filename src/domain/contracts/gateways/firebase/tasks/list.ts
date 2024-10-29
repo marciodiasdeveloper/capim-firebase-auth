@@ -8,6 +8,16 @@ export namespace TasksList {
     rowsPerPage?: number
   }
   export type Output = undefined | {
-    token: string
+    data: [{
+      id: string
+      title: string
+      description: string
+      status: string
+      dueDate: string
+      createdAt: Date
+      updatedAt: Date
+    }]
+    page: number
+    rowsPerPage: number
   }
 }

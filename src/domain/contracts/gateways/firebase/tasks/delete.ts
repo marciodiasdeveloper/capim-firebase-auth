@@ -6,7 +6,5 @@ export namespace TasksDelete {
   export type Input = {
     id: string
   }
-  export type Output = undefined | {
-    token: string
-  }
+  export type Output = undefined
 }
