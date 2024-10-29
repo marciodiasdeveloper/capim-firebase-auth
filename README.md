@@ -107,7 +107,7 @@ Antes de começar, certifique-se de ter instalado:
 A documentação da API RESTful foi feita usando **Swagger**. Para acessá-la, inicie o servidor backend e abra:
 
 ```
-http://localhost:3000/api-docs
+http://localhost:8092/api-docs
 ```
 
 ## 🛡️ Regras de Segurança
