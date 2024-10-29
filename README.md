@@ -3,17 +3,17 @@
 
 Bem-vindo ao **Madah - Firebase Auth**, um projeto focado no gerenciamento de tarefas com foco em escalabilidade e segurança. Este repositório contém o backend da aplicação, com uma integração sólida usando NodeJS & Firebase.
 
-## 📋 Descrição do Projeto
-
-Fui contratado para liderar o desenvolvimento de uma aplicação de gerenciamento de tarefas. O foco principal do projeto é garantir uma solução modular, preparada para crescimento futuro, com qualidade de código e segurança. O projeto utiliza **Firebase** para autenticação e **Firebase Firestore** para armazenamento de dados.
-
-## 📋 Importar rotas no Insominia
+## 📋 Importar rotas api no Insominia
 
 Arquivo Insominia disponível em:
 
 ```
 documentation/Insominia.json
 ```
+
+## 📋 Descrição do Projeto
+
+Fui contratado para liderar o desenvolvimento de uma aplicação de gerenciamento de tarefas. O foco principal do projeto é garantir uma solução modular, preparada para crescimento futuro, com qualidade de código e segurança. O projeto utiliza **Firebase** para autenticação e **Firebase Firestore** para armazenamento de dados.
 
 ### Funcionalidades
 
