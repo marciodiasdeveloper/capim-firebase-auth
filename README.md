@@ -82,7 +82,7 @@ Antes de começar, certifique-se de ter instalado:
      FIREBASE_APP_ID=your_app_id
      ```
 
-    - firebase database rules
+  - regras para firebase database rules
 
     ```
     rules_version = '2';
