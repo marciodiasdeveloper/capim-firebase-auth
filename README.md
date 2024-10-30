@@ -55,15 +55,15 @@ Antes de começar, certifique-se de ter instalado:
 1. **Clone o repositório:**
 
    ```bash
-   git clone https://github.com/marciodiasdeveloper/madah-firebase-auth.git
+   > git clone https://github.com/marciodiasdeveloper/madah-firebase-auth.git
    ```
 2. **Instale as dependências no backend:**
 
    No diretório principal, execute:
 
    ```bash
-   cd madah-firebase-auth
-   npm install
+   > cd madah-firebase-auth
+   > npm install
    ```
 
 3. **Configuração do Firebase:**
