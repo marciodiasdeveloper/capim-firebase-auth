@@ -18,5 +18,5 @@ export const makeLoginStoreUseCase = (): LoginStoreUseCase => {
 
   const firebase: FirebaseApp = initializeApp(firebaseConfig)
 
-  return setupLoginStore({ firebase })
+  return setupLoginStore(firebase)
 }

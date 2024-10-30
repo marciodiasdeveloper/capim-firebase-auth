@@ -8,7 +8,7 @@ type Output = LoginStore.Output
 
 export type LoginStoreUseCase = (input: Input) => Promise<Output>
 
-export const setupLoginStore: Setup = ({ firebase }: FirebaseApp) => async input => {
+export const setupLoginStore: Setup = (firebase: FirebaseApp) => async input => {
   console.log('firebase', input.firebase)
   const auth = getAuth(firebase)
   const userCredential = await signInWithEmailAndPassword(auth, input.email, input.password)
