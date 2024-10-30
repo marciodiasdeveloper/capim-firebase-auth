@@ -1,5 +1,5 @@
 
-# Madah - Firebase Auth
+# Capim - Firebase Auth
 
 Bem-vindo ao **Madah - Firebase Auth**! Este projeto é um sistema robusto de gerenciamento de tarefas, projetado com foco em escalabilidade, segurança e manutenibilidade. Construído com Node.js e Firebase, o backend da aplicação segue princípios de **SOLID** e **Clean Code** para oferecer uma base de código organizada, de fácil extensão e confiável. Este repositório inclui uma arquitetura modular, integrada com Firebase Auth e Firestore, garantindo autenticação segura e gestão de dados eficaz para uma experiência ágil e consistente.
 
@@ -11,7 +11,7 @@ Arquivo de rotas no Insomnia disponível em: [documentation/Insomnia.json](docum
 
 ## 📋 Descrição do Projeto
 
-Fui contratado para liderar o desenvolvimento de uma aplicação de gerenciamento de tarefas. O foco principal do projeto é garantir uma solução modular, preparada para crescimento futuro, com qualidade de código e segurança. O projeto utiliza **Firebase** para autenticação e **Firebase Firestore** para armazenamento de dados.
+Capim - Firebase Auth é uma aplicação de gerenciamento de tarefas, projetada com foco em modularidade e escalabilidade para suportar o crescimento futuro. O projeto adota as melhores práticas de desenvolvimento, com uma forte ênfase em qualidade de código e segurança. Utilizando **Firebase Auth** para autenticação e **Firebase Firestore** para armazenamento de dados, Capim oferece uma solução ágil, segura e eficiente para o gerenciamento de tarefas, garantindo uma estrutura flexível e preparada para evoluir.
 
 ### Funcionalidades
 
