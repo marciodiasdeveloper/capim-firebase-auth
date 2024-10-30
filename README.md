@@ -82,19 +82,19 @@ Antes de começar, certifique-se de ter instalado:
      FIREBASE_APP_ID=your_app_id
      ```
 
-  - Regras para firebase database rules
+   - Regras para firebase database rules
 
-      ```
-      rules_version = '2';
+     ```
+     rules_version = '2';
     
-      service cloud.firestore {
-        match /databases/{database}/documents {
-          match /{document=**} {
-            allow read, write: if request.auth != null;
-          }
-        }
-      }
-      ```
+     service cloud.firestore {
+       match /databases/{database}/documents {
+         match /{document=**} {
+           allow read, write: if request.auth != null;
+         }
+       }
+     }
+     ```
     
 4. **Executando o projeto:**
 
