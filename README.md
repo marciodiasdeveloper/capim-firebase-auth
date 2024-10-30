@@ -100,8 +100,8 @@ Antes de começar, certifique-se de ter instalado:
    Para rodar o backend, execute:
 
    ```bash
-   cd backend
-   npm run dev
+   > cd backend
+   > npm run dev
    ```
 
 5. **Acesse a aplicação:**
