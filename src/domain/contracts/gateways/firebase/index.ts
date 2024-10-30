@@ -1,3 +1,4 @@
+export * from './initialize-app'
 export * from './forgot-password'
 export * from './reset-password-confirm'
 export * from './user'

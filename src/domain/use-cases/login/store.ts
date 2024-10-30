@@ -1,13 +1,15 @@
-import { LoginStore } from '@/domain/contracts/gateways'
+import { FirebaseInitializeApp, LoginStore } from '@/domain/contracts/gateways'
+import { FirebaseApp } from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
-type Setup = (firebase: any) => LoginStoreUseCase
-type Input = LoginStore.Input
+type Setup = (firebase: FirebaseApp) => LoginStoreUseCase
+type Input = LoginStore.Input & FirebaseInitializeApp
 type Output = LoginStore.Output
 
 export type LoginStoreUseCase = (input: Input) => Promise<Output>
 
-export const setupLoginStore: Setup = ({ firebase }) => async input => {
+export const setupLoginStore: Setup = ({ firebase }: FirebaseApp) => async input => {
+  console.log('firebase', input.firebase)
   const auth = getAuth(firebase)
   const userCredential = await signInWithEmailAndPassword(auth, input.email, input.password)
   const user = userCredential.user
