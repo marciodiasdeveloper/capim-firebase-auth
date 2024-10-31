@@ -1,19 +1,16 @@
-import { Controller, UserStoreController } from '@/application/controllers'
+import { Controller, ForgotPasswordStoreController } from '@/application/controllers'
 import { ServerError } from '@/application/errors'
 import { RequiredString } from '@/application/validation'
 import { AuthorizationTokenError, AuthorizationDomainNotValidError } from '@/domain/entities'
 
 import { v4 as uuidv4 } from 'uuid'
 
-describe('UserStoreController', () => {
-  let sut: UserStoreController
+describe('ForgotPasswordStoreController', () => {
+  let sut: ForgotPasswordStoreController
   let sutAuthorizationToken: jest.Mock
 
   const mockHttpRequestInput = {
-    displayName: 'Foo Bar',
-    phoneNumber: '+5537999999999',
-    email: 'foo@bar.com',
-    password: '123456'
+    email: 'foo@bar.com'
   }
 
   beforeAll(() => {
@@ -22,13 +19,13 @@ describe('UserStoreController', () => {
   })
 
   beforeEach(() => {
-    sut = new UserStoreController(sutAuthorizationToken)
+    sut = new ForgotPasswordStoreController(sutAuthorizationToken)
   })
 
   it('should extend Controller', async () => {
     expect(sut).toBeInstanceOf(Controller)
   })
-  it('should call Category with correct input', async () => {
+  it('should call Forgot Password with correct input', async () => {
     await sut.handle(mockHttpRequestInput)
     expect(sutAuthorizationToken).toHaveBeenCalledWith(mockHttpRequestInput)
     expect(sutAuthorizationToken).toHaveBeenCalledTimes(1)
@@ -37,7 +34,7 @@ describe('UserStoreController', () => {
   it('should return 400 if AuthorizationTokenError fails', async () => {
     sutAuthorizationToken = jest.fn()
     sutAuthorizationToken.mockRejectedValueOnce(new AuthorizationTokenError())
-    sut = new UserStoreController(sutAuthorizationToken)
+    sut = new ForgotPasswordStoreController(sutAuthorizationToken)
 
     const httpResponse = await sut.handle(mockHttpRequestInput)
 
@@ -50,7 +47,7 @@ describe('UserStoreController', () => {
   it('should return 400 if AuthorizationDomainNotValidError fails', async () => {
     sutAuthorizationToken = jest.fn()
     sutAuthorizationToken.mockRejectedValueOnce(new AuthorizationDomainNotValidError())
-    sut = new UserStoreController(sutAuthorizationToken)
+    sut = new ForgotPasswordStoreController(sutAuthorizationToken)
 
     const httpResponse = await sut.handle(mockHttpRequestInput)
 
@@ -62,17 +59,11 @@ describe('UserStoreController', () => {
 
   it('should build Validators correctly on save', async () => {
     const validators = sut.buildValidators({
-      displayName: '',
-      phoneNumber: '',
-      email: '',
-      password: ''
+      email: ''
     })
 
     expect(validators).toEqual([
-      new RequiredString('', 'displayName'),
-      new RequiredString('', 'phoneNumber'),
-      new RequiredString('', 'email'),
-      new RequiredString('', 'password')
+      new RequiredString('', 'email')
     ])
   })
 
@@ -80,7 +71,7 @@ describe('UserStoreController', () => {
     sutAuthorizationToken = jest.fn()
     sutAuthorizationToken.mockRejectedValueOnce(new Error())
 
-    sut = new UserStoreController(sutAuthorizationToken)
+    sut = new ForgotPasswordStoreController(sutAuthorizationToken)
 
     const httpResponse = await sut.handle(mockHttpRequestInput)
 
