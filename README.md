@@ -125,9 +125,19 @@ http://localhost:8092/api-docs
 
 ## 🔗 Rotas da api
 
-### [GET] | /ping | Rota de Health da aplicação
+### [GET] | /ping | Health da aplicação
 - Method: GET
 - Route: /ping
+- Return
+  ```json
+  {
+  	"message": "pong"
+  }
+  ```
+
+### [POST] | /user | Criar usuário
+- Method: POST
+- Route: /user
 - Body:
   ```json
   {
@@ -137,16 +147,6 @@ http://localhost:8092/api-docs
   	"password": "123456"
   }
   ```
-- Return
-  ```json
-  {
-  	"message": "pong"
-  }
-  ```
-
-### [POST] | /user | Criar usuário no firebase
-- Method: POST
-- Route: /user
 - Return
   ```json
   {
