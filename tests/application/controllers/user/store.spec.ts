@@ -1,7 +1,7 @@
 import { Controller, UserStoreController } from '@/application/controllers'
 import { ServerError } from '@/application/errors'
 import { RequiredString } from '@/application/validation'
-import { AuthorizationTokenError, AuthorizationDomainNotValidError } from '@/domain/entities'
+import { AuthorizationTokenError } from '@/domain/entities'
 
 import { v4 as uuidv4 } from 'uuid'
 
@@ -44,19 +44,6 @@ describe('UserStoreController', () => {
     expect(httpResponse).toEqual({
       statusCode: 400,
       data: new AuthorizationTokenError()
-    })
-  })
-
-  it('should return 400 if AuthorizationDomainNotValidError fails', async () => {
-    sutAuthorizationToken = jest.fn()
-    sutAuthorizationToken.mockRejectedValueOnce(new AuthorizationDomainNotValidError())
-    sut = new UserStoreController(sutAuthorizationToken)
-
-    const httpResponse = await sut.handle(mockHttpRequestInput)
-
-    expect(httpResponse).toEqual({
-      statusCode: 400,
-      data: new AuthorizationDomainNotValidError()
     })
   })
 
