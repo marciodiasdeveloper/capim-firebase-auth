@@ -26,7 +26,7 @@ describe('LoginStoreController', () => {
   it('should extend Controller', async () => {
     expect(sut).toBeInstanceOf(Controller)
   })
-  it('should call Category with correct input', async () => {
+  it('should call Login with correct input', async () => {
     await sut.handle(mockHttpRequestInput)
     expect(sutAuthorizationToken).toHaveBeenCalledWith(mockHttpRequestInput)
     expect(sutAuthorizationToken).toHaveBeenCalledTimes(1)
