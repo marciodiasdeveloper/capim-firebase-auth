@@ -2,25 +2,39 @@
 // import { mock, MockProxy } from 'jest-mock-extended'
 // import { FirebaseApp } from 'firebase/app'
 
-jest.mock('firebase/app', () => {
-  const userCredentialMock = {
-    user: {
-      sendEmailVerification: jest.fn()
-    }
-  }
+// jest.mock('firebase/app', () => {
+//   const userCredentialMock = {
+//     user: {
+//       sendEmailVerification: jest.fn()
+//     }
+//   }
+//   return {
+//     auth: jest.fn().mockReturnThis(),
+//     currentUser: {
+//       email: 'test',
+//       uid: '123',
+//       emailVerified: true
+//     },
+//     signInWithEmailAndPassword: jest.fn(),
+//     createUserWithEmailAndPassword: jest.fn(() => userCredentialMock),
+//     sendPasswordResetEmail: jest.fn(),
+//     signOut: jest.fn(),
+//     onAuthStateChanged: jest.fn(),
+//     initializeApp: jest.fn()
+//   }
+// })
+
+// jest.mock('firebase/auth')
+
+jest.mock('firebase/auth', () => {
   return {
     auth: jest.fn().mockReturnThis(),
-    currentUser: {
-      email: 'test',
-      uid: '123',
-      emailVerified: true
-    },
-    signInWithEmailAndPassword: jest.fn(),
-    createUserWithEmailAndPassword: jest.fn(() => userCredentialMock),
-    sendPasswordResetEmail: jest.fn(),
-    signOut: jest.fn(),
-    onAuthStateChanged: jest.fn(),
-    initializeApp: jest.fn()
+    signInWithEmailAndPassword: jest.fn(async () => {
+      return new Promise((resolve, reject) => {
+        resolve(null)
+      })
+    }),
+    getAuth: jest.fn()
   }
 })
 
@@ -38,23 +52,15 @@ describe('LoginStoreUseCase', () => {
   //   password: '123456'
   // }
 
-  beforeAll(() => {
-    // sutFirebase = mock()
-    // sutFirebase.getAuth.mockResolvedValue({})
-    // sutFirebase.getFirestore.mockResolvedValue({})
-    // sutFirebase.createUserWithEmailAndPassword.mockResolvedValue({
-    //   user: {
-    //     uid: uuidv4(),
-    //     email: mockInput.email,
-    //     getIdToken: async () => 'any_token',
-    //     emailVerified: true
-    //   }
-    // })
-  })
+  // beforeAll(() => {
+  //   sutFirebase = mock()
+  //   sutFirebase.getAuth.mockResolvedValue({})
+  //   sutFirebase.signInWithEmailAndPassword.mockResolvedValue({})
+  // })
 
-  beforeEach(() => {
-    // sut = setupLoginStore(sutFirebase)
-  })
+  // beforeEach(() => {
+  //   sut = setupLoginStore(sutFirebase)
+  // })
 
   describe('setupLoginStore', () => {
     it('should create new user', async () => {
