@@ -115,7 +115,7 @@ Antes de começar, certifique-se de ter instalado:
 
    O backend estará disponível em `http://localhost:8092`.
 
-## 📖 Documentação da API
+### 📖 Documentação da API
 
 A documentação da API RESTful foi feita usando **Swagger**. Para acessá-la, inicie o servidor backend e abra:
 
