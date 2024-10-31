@@ -125,9 +125,7 @@ http://localhost:8092/api-docs
 
 ## 🔗 Rotas da api
 
-|                                                               |     |
-| ------|---------|-------------------------------------------- | --- |
-| [GET] | - /ping | Rota de Health da aplicação                 | ✔   |
+---
 
 ## 🛡️ Regras de Segurança
 
