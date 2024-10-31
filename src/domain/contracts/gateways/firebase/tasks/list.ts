@@ -4,8 +4,8 @@ export interface TasksList {
 
 export namespace TasksList {
   export type Input = {
-    page?: number
-    rowsPerPage?: number
+    page: number
+    rowsPerPage: number
   }
   export type Output = undefined | {
     data: [{

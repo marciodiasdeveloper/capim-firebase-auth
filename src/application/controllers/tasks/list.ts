@@ -2,6 +2,7 @@ import { Controller } from '@/application/controllers'
 import { HttpResponse, okNoContent } from '@/application/helpers'
 import { TasksList, Validator } from '@/domain/contracts/gateways'
 import { TasksListUseCase } from '@/domain/use-cases'
+import { ValidationBuilder as Builder } from '@/application/validation'
 
 type HttpRequest = TasksList.Input
 
@@ -18,6 +19,9 @@ export class TasksListController extends Controller {
   }
 
   override buildValidators (input: HttpRequest): Validator[] {
-    return []
+    return [
+      ...Builder.of({ value: input.page, fieldName: 'page' }).number().build(),
+      ...Builder.of({ value: input.rowsPerPage, fieldName: 'rowsPerPage' }).number().build()
+    ]
   }
 }
