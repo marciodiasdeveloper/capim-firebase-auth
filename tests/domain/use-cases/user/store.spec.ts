@@ -1,74 +1,95 @@
-// import { setupUserStore, UserStoreUseCase } from '@/domain/use-cases'
-// import { v4 as uuidv4 } from 'uuid'
-// import { mock, MockProxy } from 'jest-mock-extended'
-// import { AuthEmailAlreadyInUse } from '@/application/errors'
-// import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { v4 as uuidv4 } from 'uuid'
+import { setupUserStore, UserStoreUseCase } from '@/domain/use-cases'
+import { mock, MockProxy } from 'jest-mock-extended'
+import { FirebaseApp } from 'firebase/app'
+import { setDoc } from 'firebase/firestore'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { AuthEmailAlreadyInUse } from '@/application/errors/firebase'
 
-// describe('UserStoreUseCase', () => {
-//   let sut: UserStoreUseCase
-//   let sutFirebase: MockProxy<any>
+jest.mock('firebase/auth', () => ({
+  getAuth: jest.fn().mockReturnValue({
+    currentUser: {
+      getIdToken: jest.fn().mockResolvedValue('any_token')
+    }
+  }),
+  createUserWithEmailAndPassword: jest.fn().mockResolvedValue({
+    user: {
+      uid: uuidv4().toString(),
+      email: 'foo@bar.com',
+      emailVerified: true,
+      getIdToken: jest.fn().mockResolvedValue('any_token')
+    }
+  }),
+  updateProfile: jest.fn().mockResolvedValue({})
+}))
 
-//   type Input = {
-//     displayName: string
-//     phoneNumber: string
-//     password: string
-//     email: string
-//   }
+jest.mock('firebase/firestore', () => ({
+  getFirestore: jest.fn().mockResolvedValue({}),
+  doc: jest.fn().mockReturnValue({}),
+  setDoc: jest.fn().mockResolvedValue({})
+}))
 
-//   const mockInput: Input = {
-//     displayName: 'Foo bar',
-//     phoneNumber: '+3337999999999',
-//     email: 'foo@bar.com',
-//     password: '123456'
-//   }
+describe('UserStoreUseCase', () => {
+  let sut: UserStoreUseCase
+  let sutFirebase: MockProxy<FirebaseApp>
 
-//   beforeAll(() => {
-//     sutFirebase = mock()
-//     sutFirebase.getAuth.mockResolvedValue({})
-//     sutFirebase.getFirestore.mockResolvedValue({})
-//     sutFirebase.createUserWithEmailAndPassword.mockResolvedValue({
-//       user: {
-//         uid: uuidv4(),
-//         email: mockInput.email,
-//         getIdToken: async () => 'any_token',
-//         emailVerified: true
-//       }
-//     })
-//   })
+  type Input = {
+    displayName: string
+    phoneNumber: string
+    password: string
+    email: string
+  }
 
-//   beforeEach(() => {
-//     sut = setupUserStore(sutFirebase)
-//   })
+  const mockInput: Input = {
+    displayName: 'Foo bar',
+    phoneNumber: '+3337999999999',
+    email: 'foo@bar.com',
+    password: '123456'
+  }
 
-//   describe('setupUserStore', () => {
-//     it('should create new user', async () => {
-//       const customer = await sut(mockInput)
-//       console.log(customer)
-//       expect(customer).toEqual({ token: 'any_token' })
-//     })
+  beforeAll((): void => {
+    sutFirebase = mock()
+  })
 
-//     it('deve lançar AuthEmailAlreadyInUse quando o email já estiver em uso', async () => {
-//       class AuthError extends Error {
-//         code: string
-//         constructor (message: string, code: string) {
-//           super(message)
-//           this.code = code
-//         }
-//       }
+  beforeEach((): void => {
+    sut = setupUserStore(sutFirebase)
+  })
 
-//       const error = new AuthError('auth/email-already-in-use', 'auth/email-already-in-use')
-//       sutFirebase.createUserWithEmailAndPassword.mockRejectedValue(error)
+  describe('setupUserStore', () => {
+    it('should create new user and return token', async () => {
+      const customer = await sut(mockInput)
 
-//       const firebase = sutFirebase
-//       const userStoreUseCase = setupUserStore({ firebase })
+      expect(customer).toEqual({ token: 'any_token' })
 
-//       await expect(userStoreUseCase(mockInput)).rejects.toThrow(AuthEmailAlreadyInUse)
-//       expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(firebase, mockInput.email, mockInput.password)
-//     })
-//   })
-// })
-describe(' TaskDeleteUseCase', () => {
-  it('should delete a task', async () => {
+      // Verifica se as funções foram chamadas corretamente
+      expect(createUserWithEmailAndPassword).toHaveBeenCalledWith(
+        expect.anything(),
+        mockInput.email,
+        mockInput.password
+      )
+      expect(updateProfile).toHaveBeenCalledWith(
+        expect.anything(),
+        { displayName: mockInput.displayName }
+      )
+      expect(setDoc).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          email: mockInput.email,
+          displayName: mockInput.displayName,
+          phoneNumber: mockInput.phoneNumber,
+          createdAt: expect.any(String)
+        })
+      )
+    })
 
+    it('should throw AuthEmailAlreadyInUse when email is already in use', async () => {
+      const error = {
+        code: 'auth/email-already-in-use'
+      };
+
+      (createUserWithEmailAndPassword as jest.Mock).mockRejectedValue(error)
+
+      await expect(sut(mockInput)).rejects.toThrow(AuthEmailAlreadyInUse)
+    })
   })
 })
