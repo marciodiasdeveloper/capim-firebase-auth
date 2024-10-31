@@ -134,6 +134,7 @@ http://localhost:8092/api-docs
   	"message": "pong"
   }
   ```
+---
 
 ### [POST] | /user | Criar usuário
 - Method: POST
@@ -154,6 +155,7 @@ http://localhost:8092/api-docs
   	"token": "any_token"
   }
   ```
+---
 
 ### [POST] | /forgot-password | Recuperar senha do usuário
 - Method: POST
@@ -165,8 +167,8 @@ http://localhost:8092/api-docs
   	"email": "foo@bar.com"
   }
   ```
-  
-### [POST] | /login
+---
+
 ## 🛡️ Regras de Segurança
 
 As permissões de acesso às tarefas são validadas, garantindo que cada usuário só possa visualizar e modificar suas próprias tarefas. As regras básicas de segurança também foram configuradas no Firestore.
