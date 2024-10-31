@@ -11,7 +11,7 @@
     "mocks",
     ".vscode",
     "node_modules",
-    "logger",
+    "firebase",
     "coverage",
     "dist",
     ".husky"

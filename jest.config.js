@@ -23,5 +23,9 @@ module.exports = {
     '^.+\\.(t|j)sx?$': ['@swc/jest']
   },
   clearMocks: true,
-  setupFiles: ['dotenv/config', './mocks/redis', './mocks/logger']
+  setupFiles: [
+    'dotenv/config',
+    './mocks/redis',
+    './mocks/logger'
+  ]
 }
