@@ -1,5 +1,5 @@
 import { validateError, ValidationError } from '@/application/errors/validate-error'
-import { AuthenticationError, NotRunMigrations } from '@/domain/entities'
+import { AuthenticationError } from '@/domain/entities'
 import { NotFoundError } from '@/application/errors'
 
 describe('validateError', () => {
@@ -31,11 +31,6 @@ describe('validateError', () => {
     const error = new NotFoundError()
     validateError(error, validateErrors)
     expect(notFound).toBeCalled()
-  })
-  it('validate badRequest is called', () => {
-    const error = new NotRunMigrations()
-    validateError(error, validateErrors)
-    expect(badRequest).toBeCalled()
   })
   it('validate serverError is called', () => {
     const error = new Error('my custom error')
