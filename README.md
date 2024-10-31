@@ -138,6 +138,7 @@ http://localhost:8092/api-docs
 ### [POST] | /user | Criar usuário
 - Method: POST
 - Route: /user
+- Required: [displayName, phoNumber, email, password]
 - Body:
   ```json
   {
@@ -151,6 +152,17 @@ http://localhost:8092/api-docs
   ```json
   {
   	"token": "any_token"
+  }
+  ```
+
+### [POST] | /forgot-password | Recuperar senha do usuário
+- Method: POST
+- Route: /forgot-password
+- Required: [email]
+- Body:
+  ```json
+  {
+  	"email": "foo@bar.com"
   }
   ```
   
