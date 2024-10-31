@@ -3,10 +3,6 @@
 
 Bem-vindo ao **Madah - Firebase Auth**! Este projeto é um sistema robusto de gerenciamento de tarefas, projetado com foco em escalabilidade, segurança e manutenibilidade. Construído com Node.js e Firebase, o backend da aplicação segue princípios de **SOLID** e **Clean Code** para oferecer uma base de código organizada, de fácil extensão e confiável. Este repositório inclui uma arquitetura modular, integrada com Firebase Auth e Firestore, garantindo autenticação segura e gestão de dados eficaz para uma experiência ágil e consistente.
 
-## 📋 Importar rotas api no Insomnia
-
-Arquivo de rotas para o Insomnia disponível em: [documentation/Insomnia.json](documentation/Insomnia.json)
-
 ---
 
 ## 📋 Descrição do Projeto
@@ -115,6 +111,8 @@ Antes de começar, certifique-se de ter instalado:
 
    O backend estará disponível em `http://localhost:8092`.
 
+---
+
 ## 📖 Documentação da API
 
 A documentação da API RESTful foi feita usando **Swagger**. Para acessá-la, inicie o servidor backend e abra:
@@ -122,6 +120,14 @@ A documentação da API RESTful foi feita usando **Swagger**. Para acessá-la, i
 ```
 http://localhost:8092/api-docs
 ```
+
+---
+
+## 📋 Importar rotas api no Insomnia
+
+Arquivo de rotas para o Insomnia disponível em: [documentation/Insomnia.json](documentation/Insomnia.json)
+
+---
 
 ## 🔗 Rotas da api
 
