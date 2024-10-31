@@ -1,17 +1,15 @@
-import { Controller, UserStoreController } from '@/application/controllers'
+import { Controller, LoginStoreController } from '@/application/controllers'
 import { ServerError } from '@/application/errors'
 import { RequiredString } from '@/application/validation'
 import { AuthorizationTokenError, AuthorizationDomainNotValidError } from '@/domain/entities'
 
 import { v4 as uuidv4 } from 'uuid'
 
-describe('UserStoreController', () => {
-  let sut: UserStoreController
+describe('LoginStoreController', () => {
+  let sut: LoginStoreController
   let sutAuthorizationToken: jest.Mock
 
   const mockHttpRequestInput = {
-    displayName: 'Foo Bar',
-    phoneNumber: '+5537999999999',
     email: 'foo@bar.com',
     password: '123456'
   }
@@ -22,7 +20,7 @@ describe('UserStoreController', () => {
   })
 
   beforeEach(() => {
-    sut = new UserStoreController(sutAuthorizationToken)
+    sut = new LoginStoreController(sutAuthorizationToken)
   })
 
   it('should extend Controller', async () => {
@@ -37,7 +35,7 @@ describe('UserStoreController', () => {
   it('should return 400 if AuthorizationTokenError fails', async () => {
     sutAuthorizationToken = jest.fn()
     sutAuthorizationToken.mockRejectedValueOnce(new AuthorizationTokenError())
-    sut = new UserStoreController(sutAuthorizationToken)
+    sut = new LoginStoreController(sutAuthorizationToken)
 
     const httpResponse = await sut.handle(mockHttpRequestInput)
 
@@ -50,7 +48,7 @@ describe('UserStoreController', () => {
   it('should return 400 if AuthorizationDomainNotValidError fails', async () => {
     sutAuthorizationToken = jest.fn()
     sutAuthorizationToken.mockRejectedValueOnce(new AuthorizationDomainNotValidError())
-    sut = new UserStoreController(sutAuthorizationToken)
+    sut = new LoginStoreController(sutAuthorizationToken)
 
     const httpResponse = await sut.handle(mockHttpRequestInput)
 
@@ -62,15 +60,11 @@ describe('UserStoreController', () => {
 
   it('should build Validators correctly on save', async () => {
     const validators = sut.buildValidators({
-      displayName: '',
-      phoneNumber: '',
       email: '',
       password: ''
     })
 
     expect(validators).toEqual([
-      new RequiredString('', 'displayName'),
-      new RequiredString('', 'phoneNumber'),
       new RequiredString('', 'email'),
       new RequiredString('', 'password')
     ])
@@ -80,7 +74,7 @@ describe('UserStoreController', () => {
     sutAuthorizationToken = jest.fn()
     sutAuthorizationToken.mockRejectedValueOnce(new Error())
 
-    sut = new UserStoreController(sutAuthorizationToken)
+    sut = new LoginStoreController(sutAuthorizationToken)
 
     const httpResponse = await sut.handle(mockHttpRequestInput)
 
