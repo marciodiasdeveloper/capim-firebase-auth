@@ -125,9 +125,18 @@ http://localhost:8092/api-docs
 
 ## 🔗 Rotas da api
 
-### [GET] | - /ping | Rota de Health da aplicação
+### [GET] | /ping | Rota de Health da aplicação
 - Method: GET
+- Route: /ping
 - Body:
+  ```json
+  {
+  	"displayName": "Foo Bar",
+  	"phoneNumber": "+5537984171388",
+  	"email": "foo@bar.com",
+  	"password": "123456"
+  }
+  ```
 - Return
   ```json
   {
@@ -135,6 +144,17 @@ http://localhost:8092/api-docs
   }
   ```
 
+### [POST] | /user | Criar usuário no firebase
+- Method: POST
+- Route: /user
+- Return
+  ```json
+  {
+  	"token": "any_token"
+  }
+  ```
+  
+### [POST] | /login
 ## 🛡️ Regras de Segurança
 
 As permissões de acesso às tarefas são validadas, garantindo que cada usuário só possa visualizar e modificar suas próprias tarefas. As regras básicas de segurança também foram configuradas no Firestore.
