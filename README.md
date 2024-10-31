@@ -140,7 +140,6 @@ Arquivo de rotas para o Insomnia disponível em: [documentation/Insomnia.json](d
   	"message": "pong"
   }
   ```
----
 
 ### [POST] | /user | Criar usuário
 - Method: POST
@@ -161,7 +160,6 @@ Arquivo de rotas para o Insomnia disponível em: [documentation/Insomnia.json](d
   	"token": "any_token"
   }
   ```
----
 
 ### [POST] | /forgot-password | Recuperar senha do usuário
 - Method: POST
