@@ -95,13 +95,19 @@ Antes de começar, certifique-se de ter instalado:
        }
      }
      ```
-    
+4. **Executando os testes do projeto:**
+
+   Para rodar os testes do projeto, execute:
+
+   ```bash
+   > npm run test
+   ```
+   
 4. **Executando o projeto:**
 
    Para rodar o backend, execute:
 
    ```bash
-   > cd backend
    > npm run dev
    ```
 
