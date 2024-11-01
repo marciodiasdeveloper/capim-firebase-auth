@@ -13,11 +13,11 @@ export const setupLoginStore: Setup = (firebase: FirebaseApp) => async input => 
   const userCredential = await signInWithEmailAndPassword(auth, input.email, input.password)
   const user = userCredential.user
   const token = await user.getIdToken()
-  const tokenResult = await user.getIdTokenResult()
+  // const tokenResult: IdTokenResult = await user.getIdTokenResult()
 
-  console.log('Token JWT:', token)
-  console.log('Informações do token (Opcional: você pode obter o token decodificado com informações adicionais):', tokenResult)
-  console.log('Usuário logado:', user)
+  // console.log('Token JWT:', token)
+  // console.log('Informações do token (Opcional: você pode obter o token decodificado com informações adicionais):', tokenResult)
+  // console.log('Usuário logado:', user)
 
   return { token }
 }

@@ -5,14 +5,14 @@ import { Validators } from '@/infra/gateways'
 
 export class ValidationController extends Controller {
   constructor (
-    private readonly decoratee: Controller,
+    private readonly decorate: Controller,
     private readonly validators: Validators
   ) {
     super()
   }
 
   override buildValidators (httpRequest: Record<string, unknown>): Validator[] {
-    return this.decoratee.buildValidators(httpRequest)
+    return this.decorate.buildValidators(httpRequest)
   }
 
   async perform (httpRequest: Record<string, unknown>): Promise<HttpResponse> {
@@ -20,7 +20,7 @@ export class ValidationController extends Controller {
 
     if (error !== undefined) return badRequest(error)
 
-    return await this.decoratee.perform(httpRequest)
+    return await this.decorate.perform(httpRequest)
   }
 
   private validate (httpRequest: Record<string, unknown>): Error | undefined {

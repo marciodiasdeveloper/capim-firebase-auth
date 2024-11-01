@@ -76,11 +76,11 @@ describe('LoginStoreUseCase', () => {
     //   expect(data).toEqual({ token: 'any_token' })
     // })
 
-    it('should`t user e-mail not found', async () => {
-      // const error = new Error('Offensive Configuration Not Found')
-      // // mock.method.mockResolvedValueOnce(undefined)
-      // const promise = sut(mockInput)
-      // void expect(promise).rejects.toThrow(error)
-    })
+    // it('should`t user e-mail not found', async () => {
+    // const error = new Error('Offensive Configuration Not Found')
+    // // mock.method.mockResolvedValueOnce(undefined)
+    // const promise = sut(mockInput)
+    // void expect(promise).rejects.toThrow(error)
+    // })
   })
 })
