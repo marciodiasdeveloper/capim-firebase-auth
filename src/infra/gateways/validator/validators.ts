@@ -1,5 +1,6 @@
 import { BuilderValidator, CompositeValidator, Sanitizer } from '@/domain/contracts/gateways'
-import { ValidationBuilder, ValidationComposite, SanitizeObject } from '@/application/validation'
+import { ValidationBuilder, ValidationComposite } from '@/application/validation'
+import { SanitizeObject } from '@/application/sanitize-object'
 
 export class Validators implements BuilderValidator, CompositeValidator {
   builderValidator (input: BuilderValidator.Input): BuilderValidator.Output {
