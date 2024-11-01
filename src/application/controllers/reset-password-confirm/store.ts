@@ -1,15 +1,15 @@
 import { Controller } from '@/application/controllers'
 import { HttpResponse, ok } from '@/application/helpers'
-import { UserStore, Validator } from '@/domain/contracts/gateways'
-import { UserStoreUseCase } from '@/domain/use-cases'
+import { ResetPasswordConfirmStore, Validator } from '@/domain/contracts/gateways'
+import { ResetPasswordConfirmStoreUseCase } from '@/domain/use-cases'
 import { ValidationBuilder as Builder } from '@/application/validation'
 
-type HttpRequest = UserStore.Input
+type HttpRequest = ResetPasswordConfirmStore.Input
 
-type Model = Error | UserStore.Output
+type Model = Error | ResetPasswordConfirmStore.Output
 
 export class ResetPasswordConfirmStoreController extends Controller {
-  constructor (private readonly store: UserStoreUseCase) {
+  constructor (private readonly store: ResetPasswordConfirmStoreUseCase) {
     super()
   }
 
@@ -20,7 +20,8 @@ export class ResetPasswordConfirmStoreController extends Controller {
 
   override buildValidators (input: HttpRequest): Validator[] {
     return [
-      ...Builder.of({ value: input.email, fieldName: 'email' }).required().build()
+      ...Builder.of({ value: input.oobCode, fieldName: 'oobCode' }).required().build(),
+      ...Builder.of({ value: input.newPassword, fieldName: 'newPassword' }).required().build()
     ]
   }
 }
