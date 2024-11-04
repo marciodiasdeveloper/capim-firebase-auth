@@ -10,5 +10,5 @@ export type TasksListUseCase = (input: Input) => Promise<Output>
 export const setupTasksListUseCase: Setup = ({ firebase }) => async input => {
   const auth = getAuth(firebase)
   console.log(auth)
-  return { token: 'some-token' }
+  return { token: 'any_token' }
 }
