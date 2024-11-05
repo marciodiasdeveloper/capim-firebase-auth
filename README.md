@@ -44,7 +44,7 @@ Capim - Firebase Auth é uma aplicação de gerenciamento de tarefas, projetada 
 Antes de começar, certifique-se de ter instalado:
 
 - [Node.js](https://nodejs.org/)
-- Uma conta no [Firebase](https://firebase.google.com/)
+- Uma conta no [Firebase](https://firebase.google.com/) - [Docs](https://firebase.google.com/docs/auth)
 
 ### Passos para configurar
 
@@ -82,7 +82,7 @@ Antes de começar, certifique-se de ter instalado:
 
      ```
      rules_version = '2';
-    
+
      service cloud.firestore {
        match /databases/{database}/documents {
          match /{document=**} {
@@ -98,7 +98,7 @@ Antes de começar, certifique-se de ter instalado:
    ```bash
    > npm run test
    ```
-   
+
 4. **Executando o projeto:**
 
    Para rodar o backend, execute:

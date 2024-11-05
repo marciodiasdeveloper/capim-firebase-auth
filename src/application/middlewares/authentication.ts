@@ -20,6 +20,8 @@ export class AuthenticationMiddleware extends Middleware {
   async perform ({ authorization }: HttpRequest): Promise<HttpResponse<Model>> {
     const tokenDecoded = await this.authorizationTokenDecode({ token: authorization })
 
+    console.log('tokenDecoded', tokenDecoded)
+
     return ok(tokenDecoded)
   }
 

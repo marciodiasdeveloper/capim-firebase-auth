@@ -15,9 +15,15 @@ type Output = {
 export type AuthorizationTokenValidateUseCase = (input: Input) => Promise<Output>
 
 export const setupAuthorizationTokenValidate: Setup = (authorizationTokenValidate) => async input => {
+  console.log(input)
+
   const validateToken = new ValidateAuthorization(input.token)
 
+  console.log('validateToken', validateToken)
+
   const authorizationData = await authorizationTokenValidate.authorizeToken(validateToken.validateAuth())
+
+  console.log('authorizationData', authorizationData)
 
   if (authorizationData?.email == null){
     throw new AuthenticationError()
