@@ -2,7 +2,7 @@ node_modules
 dist
 coverage
 .env
-logger
+*.log
 .azure-access.key
 .idea
 .DS_Store

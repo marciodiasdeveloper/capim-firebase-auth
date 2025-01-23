@@ -1,6 +1,4 @@
 import { AuthorizationTokenValidate } from '@/domain/contracts/gateways'
-
-// import { ValidateUser } from 'library-auth'
 import { env } from '@/main/config/env'
 import { FirebaseApp, initializeApp } from 'firebase/app'
 import { getAuth, signInWithCustomToken } from 'firebase/auth'

@@ -1,4 +1,4 @@
-import { HashHandler } from '@/infra/gateways/hash-handler'
+import { HashHandler } from '@/infra/gateways/hash/hash-handler'
 
 const update = jest.fn().mockReturnValue(Buffer.from(''))
 const final = jest.fn().mockReturnValue(Buffer.from(''))
